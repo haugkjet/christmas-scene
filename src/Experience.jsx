@@ -2,8 +2,14 @@ import React from "react";
 import { DoubleSide } from "three";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
+import { Perf } from "r3f-perf";
+import { useLoader } from "@react-three/fiber";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import Lights from "./Lights";
+import { Environment, Sparkles } from "@react-three/drei";
 
 export default function Experience() {
+  const model = useLoader(GLTFLoader, "./christmas-scene.glb");
   return (
     <>
       <Canvas
@@ -12,19 +18,16 @@ export default function Experience() {
           fov: 45,
           near: 0.1,
           far: 200,
-          position: [2.5, 4, 6],
+          position: [0, 15, 15],
         }}
-        style={{ background: "#8CABFF" }}
       >
         <OrbitControls />
-        <mesh
-          position={[0, -0.01, 0]}
-          rotation={[Math.PI / 2, 0, 0]}
-          scale={[50, 50, 1]}
-        >
-          <planeGeometry attach="geometry" />
-          <meshBasicMaterial color="#d0d0d0" side={DoubleSide} />
-        </mesh>
+        <Environment files="./winter_lake_01_2k.exr" background blur={0.5} />
+        <Lights />
+        <Perf position="top-left" />
+        <Sparkles size={10} scale={[15, 4, 15]} position-y={2} speed={1.2} />
+
+        <primitive object={model.scene} />
       </Canvas>
     </>
   );
