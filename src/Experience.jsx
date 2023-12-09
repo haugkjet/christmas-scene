@@ -18,17 +18,13 @@ export default function Experience() {
           fov: 45,
           near: 0.1,
           far: 200,
-          position: [-5, 1, 9],
+          position: [-5, 1.5, 9],
           rotation: [0, 90, 90],
         }}
       >
         <OrbitControls />
-        <Environment
-          rotation-z={90}
-          files="./snowy_cemetery_1k.hdr"
-          background
-          blur={0.2}
-        />
+        <Environment files="./snowy_park_01_1k.exr" background blur={0.5} />
+        <Lights />
 
         <Perf position="top-left" />
         <Sparkles size={10} scale={[15, 4, 15]} position-y={2} speed={1.2} />
