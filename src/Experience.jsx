@@ -27,7 +27,7 @@ export default function Experience() {
         <Lights />
 
         <Perf position="top-left" />
-        <Sparkles size={10} scale={[15, 4, 15]} position-y={2} speed={1.2} />
+        <Sparkles size={40} scale={[15, 4, 15]} position-y={1} speed={1.2} />
 
         <primitive object={model.scene} />
       </Canvas>
